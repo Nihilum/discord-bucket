@@ -20,6 +20,10 @@
             <groupId>com.mattsource.discordbucket</groupId>
             <artifactId>discordbucket-logging</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+        </dependency>
     </dependencies>
 
 

@@ -21,8 +21,16 @@
             <artifactId>discordbucket-logging</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.mattsource.discordbucket</groupId>
+            <artifactId>discordbucket-translation</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
         </dependency>
     </dependencies>
 
