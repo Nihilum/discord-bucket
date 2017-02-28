@@ -8,6 +8,8 @@
         <module>logging</module>
         <module>rest</module>
         <module>translation</module>
+        <module>server</module>
+        <module>parent</module>
     </modules>
 
     <groupId>com.mattsource.discordbucket</groupId>
