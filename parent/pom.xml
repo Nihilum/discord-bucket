@@ -15,6 +15,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <sl4j.logging.version>1.7.12</sl4j.logging.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -36,6 +40,12 @@
                 <groupId>com.mattsource.discordbucket</groupId>
                 <artifactId>discordbucket-server</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${sl4j.logging.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
