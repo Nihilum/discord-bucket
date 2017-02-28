@@ -1,7 +1,12 @@
 package com.mattsource.discordbucket.translation;
 
+import com.mattsource.discordbucket.logging.Logger;
+import com.mattsource.discordbucket.logging.LoggerFactory;
+
 public class SampleTranslation {
+    private static final Logger LOG = LoggerFactory.INSTANCE.getLogger(SampleTranslation.class);
+
     public void run() {
-        System.out.println("Running translation...");
+        LOG.info("Running translation...");
     }
 }
