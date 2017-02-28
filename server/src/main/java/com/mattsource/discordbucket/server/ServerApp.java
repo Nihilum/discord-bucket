@@ -1,24 +1,27 @@
 package com.mattsource.discordbucket.server;
 
-import com.mattsource.discordbucket.rest.SampleRest;
-import com.mattsource.discordbucket.translation.SampleTranslation;
+import com.mattsource.discordbucket.logging.Logger;
+import com.mattsource.discordbucket.logging.LoggerFactory;
 
 public class ServerApp {
-    private final SampleRest sampleRest;
-    private final SampleTranslation sampleTranslation;
+    private static final Logger LOG = LoggerFactory.INSTANCE.getLogger(ServerApp.class);
+
+    private final JettyServer jettyServer;
 
     private ServerApp() {
-        this.sampleRest = new SampleRest();
-        this.sampleTranslation = new SampleTranslation();
+        this.jettyServer = new JettyServer();
     }
 
-    private void run() {
-        sampleRest.run();
-        sampleTranslation.run();
+    private void run() throws Exception {
+        jettyServer.serve();
     }
 
     public static void main(String[] args) {
-        ServerApp serverApp = new ServerApp();
-        serverApp.run();
+        try {
+            ServerApp serverApp = new ServerApp();
+            serverApp.run();
+        } catch (Exception e) {
+            LOG.error(e.getMessage());
+        }
     }
 }
