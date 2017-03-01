@@ -9,7 +9,9 @@
         <module>rest</module>
         <module>translation</module>
         <module>server</module>
+        <module>scheduler</module>
         <module>parent</module>
+        <module>vocabulary</module>
     </modules>
 
     <groupId>com.mattsource.discordbucket</groupId>

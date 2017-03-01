@@ -20,7 +20,9 @@
         <javax.ws.rs-api.version>2.0</javax.ws.rs-api.version>
         <jersey.version>2.11</jersey.version>
         <jetty.version>9.2.5.v20141112</jetty.version>
-        <javax.json>1.0.4</javax.json>
+        <javax.json.version>1.0.4</javax.json.version>
+        <reflections.version>0.9.10</reflections.version>
+        <guava.version>18.0</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -28,6 +30,16 @@
             <dependency>
                 <groupId>com.mattsource.discordbucket</groupId>
                 <artifactId>discordbucket-logging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mattsource.discordbucket</groupId>
+                <artifactId>discordbucket-vocabulary</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mattsource.discordbucket</groupId>
+                <artifactId>discordbucket-scheduler</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -46,6 +58,11 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
@@ -67,9 +84,14 @@
                 <version>${jetty.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.glassfish</groupId>
                 <artifactId>javax.json</artifactId>
-                <version>${javax.json}</version>
+                <version>${javax.json.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.jersey.core</groupId>
