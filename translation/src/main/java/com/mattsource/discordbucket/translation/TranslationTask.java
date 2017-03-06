@@ -8,8 +8,6 @@ import com.mattsource.discordbucket.scheduler.TaskService;
 import com.mattsource.discordbucket.vocabulary.Types;
 
 import javax.json.JsonObject;
-import javax.json.JsonValue;
-import java.util.Map;
 import java.util.concurrent.Callable;
 
 @SchedulerTask(Types.TRANSLATION)
@@ -24,17 +22,18 @@ public class TranslationTask implements Callable<Void> {
 
     @Override
     public Void call() throws Exception {
-        LOG.info("Running TRANSLATION task.");
-
         if (jsonObject == null) {
             return null;
         }
 
-        for (Map.Entry<String, JsonValue> s : jsonObject.entrySet()) {
-            LOG.info(s.getKey() + "====" + s.getValue());
-        }
+        TranslationProcessor processor = TranslationService.INSTANCE.createTranslator(jsonObject);
 
-        SchedulerService.INSTANCE.schedule(TaskService.INSTANCE.createTask(Types.REST, jsonObject));
+        LOG.info("Translating '{}' event.", processor.parameter().getValue());
+
+        JsonObject translatedJson = processor.translate(jsonObject);
+
+        SchedulerService.INSTANCE
+                .schedule(TaskService.INSTANCE.createTask(Types.REST, translatedJson));
 
         return null;
     }
