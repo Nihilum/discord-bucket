@@ -12,7 +12,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.StringReader;
-import java.util.Optional;
 
 @Path("rest")
 public class WebhookResource {
@@ -21,15 +20,18 @@ public class WebhookResource {
     @POST
     @Path("webhook")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response webhook(String body) {
+    public Response webhook(String body) throws Exception {
         LOG.info("Accessed rest/webhook");
 
-        RequestsCache.INSTANCE.add(body);
-        // TranslationService.INSTANCE.translate(null);
+        JsonObject jsonObject = Json.createReader(new StringReader(body)).readObject();
+
+        // Asynchronous, don't wait for result
+        SchedulerService.INSTANCE
+                .schedule(TaskService.INSTANCE.createTask(Types.TRANSLATION, jsonObject));
 
         return Response.status(200).entity("OK").build();
     }
-
+/*
     @GET
     @Path("access/{id}")
     @Produces(MediaType.TEXT_PLAIN)
@@ -45,4 +47,5 @@ public class WebhookResource {
 
         return json;
     }
+    */
 }
