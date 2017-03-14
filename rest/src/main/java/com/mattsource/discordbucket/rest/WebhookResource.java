@@ -31,21 +31,4 @@ public class WebhookResource {
 
         return Response.status(200).entity("OK").build();
     }
-/*
-    @GET
-    @Path("access/{id}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String access(@PathParam("id") Integer id) throws Exception {
-        Optional<String> request = RequestsCache.INSTANCE.get(id);
-        String json = request.orElse("INVALID ID. Size is: " + RequestsCache.INSTANCE.size());
-
-        JsonObject jsonObject = Json.createReader(new StringReader(json)).readObject();
-
-        // Asynchronous, don't wait for result
-        SchedulerService.INSTANCE
-                .schedule(TaskService.INSTANCE.createTask(Types.TRANSLATION, jsonObject));
-
-        return json;
-    }
-    */
 }

@@ -1,3 +1,4 @@
 == discord-bucket ==
 
-For now just PUSH event is supported.
+1.0
+    Support repo:push.
