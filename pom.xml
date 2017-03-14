@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <modules>
+        <module>config</module>
         <module>logging</module>
         <module>rest</module>
         <module>translation</module>

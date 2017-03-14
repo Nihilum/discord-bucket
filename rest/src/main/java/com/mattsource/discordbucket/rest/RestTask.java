@@ -11,6 +11,8 @@ import javax.ws.rs.HttpMethod;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
+import com.mattsource.discordbucket.config.Config;
+import com.mattsource.discordbucket.config.ConfigService;
 import com.mattsource.discordbucket.logging.Logger;
 import com.mattsource.discordbucket.logging.LoggerFactory;
 import com.mattsource.discordbucket.scheduler.SchedulerTask;
@@ -22,10 +24,19 @@ public class RestTask implements Callable<Void> {
 
     private final JsonObject jsonObject;
     private final String webHook;
+    private final String userAgent;
 
     public RestTask(JsonObject jsonObject) {
+        Config config = ConfigService.INSTANCE.getConfig();
+
+        if (config == null) {
+            throw new IllegalStateException(
+                    "Can not process Rest Task without a proper configuration file");
+        }
+
         this.jsonObject = jsonObject;
-        this.webHook = "https://discordapp.com/api/webhooks/286168571539881984/3ih6v_3cz4DL2E6NQj1FyrZrWTV2mhsrGtfl-2aO1fxQyAh7baA4Fr4mA6Y0xL-kbiuj";
+        this.webHook = config.webHook();
+        this.userAgent = config.userAgent();
     }
 
     @Override
@@ -55,8 +66,7 @@ public class RestTask implements Callable<Void> {
                 connection.setRequestProperty(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON);
                 connection.setRequestProperty(HttpHeaders.CONTENT_LENGTH,
                         String.valueOf(json.length()));
-                connection.setRequestProperty(HttpHeaders.USER_AGENT,
-                        "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; FSL 7.0.6.01001)");
+                connection.setRequestProperty(HttpHeaders.USER_AGENT, userAgent);
 
                 connection.setUseCaches(false);
                 connection.setDoInput(true);
