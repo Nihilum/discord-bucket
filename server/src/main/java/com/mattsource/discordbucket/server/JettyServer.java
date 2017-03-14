@@ -11,7 +11,7 @@ class JettyServer {
     private final Server server;
 
     JettyServer() {
-        this.server = new Server(1717);
+        this.server = new Server(1718);
 
         ResourceConfig config = new ResourceConfig();
         config.packages("com.mattsource.discordbucket.rest");
