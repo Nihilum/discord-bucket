@@ -29,6 +29,10 @@
             <artifactId>discordbucket-translation</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.mattsource.discordbucket</groupId>
+            <artifactId>discordbucket-config</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
         </dependency>
