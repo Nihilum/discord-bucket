@@ -8,11 +8,11 @@
         <groupId>com.mattsource.discordbucket</groupId>
         <artifactId>discordbucket</artifactId>
         <relativePath>../pom.xml</relativePath>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>discordbucket-parent</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
